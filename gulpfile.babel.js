@@ -6,6 +6,7 @@ import source from 'vinyl-source-stream'
 import buffer from 'vinyl-buffer'
 import preprocessify from 'preprocessify'
 import gulpif from 'gulp-if'
+import aliasify from 'aliasify'
 
 const $ = require('gulp-load-plugins')()
 
@@ -161,7 +162,7 @@ function buildJS(target) {
     'background.js',
     'contentscript.js',
     'options.js',
-    'popup.js',
+    'popup/index.js',
     'livereload.js',
   ]
 
@@ -170,7 +171,12 @@ function buildJS(target) {
       entries: 'src/scripts/' + file,
       debug: true,
     })
-      .transform('babelify', { presets: ['es2015'] })
+      .transform('babelify', { presets: ['es2015', 'react'] })
+      .transform(aliasify, {
+        aliases: {
+          '~': './src/scripts',
+        },
+      })
       .transform(preprocessify, {
         includeExtensions: ['.js'],
         context: context,

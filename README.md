@@ -1,6 +1,6 @@
 <div align="center">
   <h1>
-    Band Chain Wallet Extension
+    BandMask
   </h1>
 
   <p>
@@ -8,7 +8,7 @@
   </p>
 </div>
 
-Similarly to MetaMask, Band Chain Wallet Extension allows developers to build dApp UI on website, while still capable of communicating with the Band Chain.
+Similarly to MetaMask, BandMask allows developers to build dApp UI on website. It exposes instance of Band Protocol Client to the web, and allows the dApp to communicate with blockchain without having to manage user wallet credentials itself.
 
 <div align="center">
   <a href="https://www.emailthis.me/open-source/extension-boilerplate">
@@ -72,9 +72,10 @@ I have extracted this from the browser extensions that I built for my side-proje
 
 ## Installation
 
-1.  Clone the repository `git clone https://github.com/EmailThis/extension-boilerplate.git`
-2.  Run `npm install`
-3.  Run `npm run build`
+```sh
+$> yarn install
+$> yarn build
+```
 
 Alternately, if you want to try out the sample extension, here are the download links. After you download it, unzip the file and load it in your browser using the steps mentioned below.
 

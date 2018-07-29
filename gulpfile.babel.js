@@ -171,7 +171,10 @@ function buildJS(target) {
       entries: 'src/scripts/' + file,
       debug: true,
     })
-      .transform('babelify', { presets: ['es2015', 'react'] })
+      .transform('babelify', {
+        presets: ['latest', 'react'],
+        plugins: ['transform-object-rest-spread'],
+      })
       .transform(aliasify, {
         aliases: {
           '~': './src/scripts',

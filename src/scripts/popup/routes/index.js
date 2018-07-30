@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Switch } from 'react-router'
+import { Route, Switch, Redirect } from 'react-router'
 import styled from 'styled-components'
 
 import Header from '~/popup/components/Header'

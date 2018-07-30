@@ -8,8 +8,8 @@ export const Button = styled.button`
   color: #ffffff;
   letter-spacing: 0.05em;
   border-radius: 0.3em;
-  line-height: 2.5em;
-  padding: 0 1.5em;
+  line-height: ${p => (p.slim ? 1.8 : 2.5)}em;
+  padding: 0 ${p => (p.slim ? 0.25 : 1.5)}em;
   background: linear-gradient(
     to bottom,
     ${p => {

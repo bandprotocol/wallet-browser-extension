@@ -5,24 +5,21 @@ import Component from './renderer'
 
 @connect(
   state => ({
-    vault: state.app.Vault.get('vault'),
+    wallet: state.app.Vault.get('vault').wallets[0],
   }),
   dispatch =>
     bindActions(
       {
         goToVaultPassword: () => push('/vault-password'),
-        goToWallet: () => push('/wallet'),
       },
       dispatch
     )
 )
 export default class Route extends React.Component {
-  componentDidMount() {
-    if (this.props.vault) this.props.goToWallet()
-    else this.props.goToVaultPassword()
-  }
-
   render() {
-    return <Component />
+    const identicon = `https://api.adorable.io/avatars/128/${
+      this.props.wallet.address
+    }.png`
+    return <Component wallet={this.props.wallet} identicon={identicon} />
   }
 }

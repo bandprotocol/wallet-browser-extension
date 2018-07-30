@@ -9,7 +9,7 @@ const history = createMemoryHistory()
 
 window.x = history
 
-export const configureStore = (initialState = {}) => {
+export const configureStore = async (initialState = {}) => {
   /* Stack of middlewares to apply */
   const middlewares = [thunk, routerMiddleware(history)]
 
@@ -20,7 +20,7 @@ export const configureStore = (initialState = {}) => {
   )
 
   // Revive session
-  store.dispatch(reviveVault())
+  await store.dispatch(reviveVault())
 
   // Expose store for debugging
   window.store = store

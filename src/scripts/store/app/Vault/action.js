@@ -23,11 +23,13 @@ export const generateVault = password => async (dispatch, getStore) => {
 
   // Create vault object
   const vault = {
-    wallets: {
-      name: 'Primary Wallet',
-      address,
-      secretbox,
-    },
+    wallets: [
+      {
+        name: 'Primary Wallet',
+        address,
+        secretbox,
+      },
+    ],
   }
 
   // Save vault

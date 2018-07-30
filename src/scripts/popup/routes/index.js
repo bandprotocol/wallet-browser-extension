@@ -8,6 +8,7 @@ import Header from '~/popup/components/Header'
 import Welcome from '~/popup/routes/welcome/'
 import VaultPassword from '~/popup/routes/vault-password/'
 import VaultSeed from '~/popup/routes/vault-seed/'
+import Wallet from '~/popup/routes/wallet/'
 
 const Container = styled.div`
   height: 100%;
@@ -30,11 +31,7 @@ export default () => (
         <Route exact path="/" component={Welcome} />
         <Route exact path="/vault-password" component={VaultPassword} />
         <Route exact path="/vault-seed" component={VaultSeed} />
-        <Route
-          exact
-          path="/wallet/:id"
-          render={({ match }) => <div>wallet {match.params.id}</div>}
-        />
+        <Route exact path="/wallet" component={Wallet} />
         <Route render={() => <Redirect to="/" />} />
       </Switch>
     </Content>

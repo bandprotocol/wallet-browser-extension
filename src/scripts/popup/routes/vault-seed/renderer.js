@@ -55,10 +55,10 @@ const Word = styled.div`
 const No = styled.div`
   border-right: solid 1px rgba(255, 255, 255, 0.3);
   width: 18px;
-  padding-right: 5px;
+  padding-right: 3px;
   margin-right: 4px;
   font-weight: 600;
-  text-align: right;
+  text-align: center;
   font-size: 10px;
 `
 

@@ -2,17 +2,17 @@ import { fromJS } from 'immutable'
 import { actionTypes } from './action'
 
 const initialState = fromJS({
-  lastPrint: null,
-  lastAlert: null,
+  vault: null,
+  mnemonic: null,
 })
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case actionTypes.PRINT:
-      return state.set('lastPrint', payload.message)
+    case actionTypes.VAULT:
+      return state.set('vault', payload.value)
 
-    case actionTypes.alert:
-      return state.set('lastAlert', payload.message)
+    case actionTypes.MNEMONIC:
+      return state.set('mnemonic', payload.value)
 
     default:
       return state

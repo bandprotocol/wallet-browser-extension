@@ -3,6 +3,7 @@ import { applyMiddleware, compose, createStore } from 'redux'
 import { connectRouter, routerMiddleware } from 'connected-react-router'
 import thunk from 'redux-thunk'
 import rootReducer from './root-reducer'
+import { reviveVault } from '~/store/app/Vault/action'
 
 const history = createMemoryHistory()
 
@@ -19,7 +20,10 @@ export const configureStore = (initialState = {}) => {
   )
 
   // Revive session
-  // store.dispatch(revive())
+  store.dispatch(reviveVault())
+
+  // Expose store for debugging
+  window.store = store
 
   return store
 }

@@ -173,7 +173,18 @@ function buildJS(target) {
     })
       .transform('babelify', {
         presets: ['latest', 'react'],
-        plugins: ['transform-object-rest-spread', 'transform-decorators'],
+        plugins: [
+          'transform-object-rest-spread',
+          'transform-decorators-legacy',
+          'transform-class-properties',
+          [
+            'transform-runtime',
+            {
+              polyfill: false,
+              regenerator: true,
+            },
+          ],
+        ],
       })
       .transform(aliasify, {
         aliases: {

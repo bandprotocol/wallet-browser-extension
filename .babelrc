@@ -1,4 +1,15 @@
 {
   "presets": ["latest"],
-  "plugins": ["transform-object-rest-spread", "transform-decorators"]
+  "plugins": [
+    "transform-object-rest-spread",
+    "transform-decorators-legacy",
+    "transform-class-properties",
+    [
+      "transform-runtime",
+      {
+        "polyfill": false,
+        "regenerator": true
+      }
+    ]
+  ]
 }

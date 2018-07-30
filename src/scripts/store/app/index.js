@@ -3,10 +3,10 @@
  */
 
 import { combineReducers } from 'redux'
-import NewWallet from './NewWallet/reducer'
+import Vault from './Vault/reducer'
 
 export default combineReducers({
-  NewWallet,
+  Vault,
 
   // ^^^ Add more reducers here
 })

@@ -46,8 +46,8 @@ export default ({
 }) => (
   <Container>
     <Piggy src="images/piggy.svg" />
-    <H1>BAND EXTENSION</H1>
-    <H2>Encrypt your new BAND vault</H2>
+    <H1>BAND PROTOCOL</H1>
+    <H2>Encrypt your new vault</H2>
     <InputContainer>
       <Input
         onChange={e => onPasswordChange(e.target.value)}

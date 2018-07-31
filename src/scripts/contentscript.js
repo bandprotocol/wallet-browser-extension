@@ -1,36 +1,21 @@
 import ext from './utils/ext'
 
-var extractTags = () => {
-  var url = document.location.href
-  if (!url || !url.match(/^http/)) return
+window.addEventListener(
+  'message',
+  function(event) {
+    // We only accept messages from this window to itself [i.e. not from any iframes]
+    if (event.source != window) return
 
-  var data = {
-    title: '',
-    description: '',
-    url: document.location.href,
-  }
+    // Reponse to Browser's ping
+    if (event.data.type && event.data.type == 'BAND_PROTOCOL_PING') {
+      window.postMessage({ type: 'BAND_PROTOCOL_PONG' }, '*')
+    }
 
-  var ogTitle = document.querySelector("meta[property='og:title']")
-  if (ogTitle) {
-    data.title = ogTitle.getAttribute('content')
-  } else {
-    data.title = document.title
-  }
-
-  var descriptionTag =
-    document.querySelector("meta[property='og:description']") ||
-    document.querySelector("meta[name='description']")
-  if (descriptionTag) {
-    data.description = descriptionTag.getAttribute('content')
-  }
-
-  return data
-}
-
-function onRequest(request, sender, sendResponse) {
-  if (request.action === 'process-page') {
-    sendResponse(extractTags())
-  }
-}
-
-ext.runtime.onMessage.addListener(onRequest)
+    if (event.data.type && event.data.type == 'BAND_PROTOCOL') {
+      // broadcasts it to rest of extension, or could just broadcast event.data.payload...
+      alert('MESSAGE!!!!')
+      ext.runtime.sendMessage(event.data)
+    } // else ignore messages seemingly not sent to yourself
+  },
+  false
+)

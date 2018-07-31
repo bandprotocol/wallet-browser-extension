@@ -80,7 +80,7 @@ export default ({ wallet, identicon }) => (
     </WalletInfo>
     <Address>
       {wallet.address}
-      <i class="icon ion-ios-copy" />
+      <i className="icon ion-ios-copy" />
     </Address>
   </Container>
 )

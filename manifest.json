@@ -19,7 +19,7 @@
     {
       "matches": ["http://*/*", "https://*/*"],
       "js": ["scripts/contentscript.js"],
-      "run_at": "document_end",
+      "run_at": "document_start",
       "all_frames": false
     }
   ],
@@ -28,7 +28,7 @@
       "19": "icons/icon-19.png",
       "38": "icons/icon-38.png"
     },
-    "default_title": "Extension Boilerplate",
+    "default_title": "Band Protocol Wallet",
     "default_popup": "popup.html"
   }
 }

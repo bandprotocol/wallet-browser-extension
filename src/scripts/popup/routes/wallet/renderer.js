@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Button } from '~/popup/components/Button'
+import knownTokens from '~/config/tokens'
+import Token from '~/popup/components/Token'
 
 const Container = styled.main`
   flex: 1;
@@ -21,6 +23,7 @@ const Identicon = styled.img`
   border-radius: 6px;
   height: 42px;
   width: 42px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 `
 const NameBalance = styled.div`
   flex: 1;
@@ -61,6 +64,12 @@ const Address = styled.div`
   }
 `
 
+const TokenList = styled.div`
+  flex: 1;
+  padding: 10px 0;
+  width: 100%;
+`
+
 export default ({ wallet, identicon }) => (
   <Container>
     <WalletInfo>
@@ -82,5 +91,10 @@ export default ({ wallet, identicon }) => (
       {wallet.address}
       <i className="icon ion-ios-copy" />
     </Address>
+    <TokenList>
+      {knownTokens.map(token => (
+        <Token key={token.address} {...token} balance={0} />
+      ))}
+    </TokenList>
   </Container>
 )

@@ -19,10 +19,20 @@
     {
       "matches": ["http://*/*", "https://*/*"],
       "js": ["scripts/contentscript.js"],
-      "run_at": "document_start",
+      "run_at": "document_end",
       "all_frames": false
     }
   ],
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "windows": "Ctrl+Space",
+        "mac": "Command+Space",
+        "chromeos": "Ctrl+Space",
+        "linux": "Ctrl+Space"
+      }
+    }
+  },
   "browser_action": {
     "default_icon": {
       "19": "icons/icon-19.png",

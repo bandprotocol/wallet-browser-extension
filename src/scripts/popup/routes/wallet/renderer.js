@@ -56,11 +56,22 @@ const Address = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
+  transition: all 300ms;
+  cursor: pointer;
 
   i {
     margin-left: auto;
     font-size: 12px;
     opacity: 0.6;
+    transition: all 300ms;
+  }
+
+  :hover {
+    background: rgba(0, 0, 0, 0.35);
+
+    i {
+      opacity: 1;
+    }
   }
 `
 
@@ -70,7 +81,7 @@ const TokenList = styled.div`
   width: 100%;
 `
 
-export default ({ wallet, identicon }) => (
+export default ({ wallet, identicon, onAddressClick }) => (
   <Container>
     <WalletInfo>
       <Identicon src={identicon} />
@@ -87,7 +98,7 @@ export default ({ wallet, identicon }) => (
         </Button>
       </Actions>
     </WalletInfo>
-    <Address>
+    <Address onClick={onAddressClick}>
       {wallet.address}
       <i className="icon ion-ios-copy" />
     </Address>

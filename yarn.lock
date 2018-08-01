@@ -950,10 +950,11 @@ balanced-match@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
 
-bandprotocol@^0.4.11:
-  version "0.4.13"
-  resolved "https://registry.yarnpkg.com/bandprotocol/-/bandprotocol-0.4.13.tgz#1f786c1980ffb02ca24fed0402d619673fd4e785"
+bandprotocol@0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/bandprotocol/-/bandprotocol-0.5.2.tgz#81fdc762ad3a662e647c2b503b3be9fae80734fc"
   dependencies:
+    bignumber.js "^7.2.1"
     buffer "^5.1.0"
     isomorphic-fetch "^2.2.1"
 
@@ -994,6 +995,10 @@ bcrypt-pbkdf@^1.0.0:
 beeper@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/beeper/-/beeper-1.1.1.tgz#e6d5ea8c5dad001304a70b22638447f69cb2f809"
+
+bignumber.js@^7.2.1:
+  version "7.2.1"
+  resolved "https://registry.yarnpkg.com/bignumber.js/-/bignumber.js-7.2.1.tgz#80c048759d826800807c4bfd521e50edbba57a5f"
 
 bl@^1.2.1:
   version "1.2.2"

@@ -16,10 +16,25 @@ import Component from './renderer'
     )
 )
 export default class Route extends React.Component {
+  onAddressClick() {
+    // Copy
+    document.oncopy = event => {
+      event.clipboardData.setData('text/plain', this.props.wallet.address)
+      event.preventDefault()
+    }
+    document.execCommand('copy', false, null)
+  }
+
   render() {
     const identicon = `https://api.adorable.io/avatars/128/${
       this.props.wallet.address
     }.png`
-    return <Component wallet={this.props.wallet} identicon={identicon} />
+    return (
+      <Component
+        wallet={this.props.wallet}
+        identicon={identicon}
+        onAddressClick={this.onAddressClick.bind(this)}
+      />
+    )
   }
 }

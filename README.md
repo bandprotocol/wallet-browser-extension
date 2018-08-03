@@ -19,41 +19,25 @@ Similarly to MetaMask, BandMask allows developers to build dApp UI on website. I
   <img width="210px" src="resources/screenshot-1.png" alt="Mockup" />&nbsp;<img width="210px" src="resources/screenshot-2.png" alt="Mockup" />&nbsp;<img width="210px" src="resources/screenshot-3.png" alt="Mockup" />&nbsp;<img width="210px" src="resources/screenshot-4.png" alt="Mockup" />&nbsp;
 </div>
 
-## Features
-
-<dl>
-  <dt>Write once and deploy to Chrome, Opera & Firefox</dt>
-  <dd>
-    Based on WebExtensions. It also includes a tiny polyfill to bring uniformity to the APIs exposed by different browsers.
-  </dd>
-</dl>
-
-<dl>
-  <dt>Live-reload</dt>
-  <dd>
-    Your changes to CSS, HTML & JS files will be relayed instantly without having to manually reload the extension. This ends up saving a lot of time and improving the developer experience.
-  </dd>
-</dl>
-
-## Installation
+# Installation
 
 ```sh
 $> yarn install
 $> yarn build
 ```
 
-##### Load the extension in Chrome & Opera
+### Load the extension in Chrome & Opera
 
 1.  Open Chrome/Opera browser and navigate to chrome://extensions
 2.  Select "Developer Mode" and then click "Load unpacked extension..."
 3.  From the file browser, choose to `extension-boilerplate/build/chrome` or (`extension-boilerplate/build/opera`)
 
-##### Load the extension in Firefox
+### Load the extension in Firefox
 
 1.  Open Firefox browser and navigate to about:debugging
 2.  Click "Load Temporary Add-on" and from the file browser, choose `extension-boilerplate/build/firefox`
 
-## Developing
+# Developing
 
 The following tasks can be used when you want to start developing the extension and want to enable live reload -
 
@@ -61,11 +45,11 @@ The following tasks can be used when you want to start developing the extension 
 - `npm run opera-watch`
 - `npm run firefox-watch`
 
-## Packaging
+# Packaging
 
 Run `npm run dist` to create a zipped, production-ready extension for each browser. You can then upload that to the appstore.
 
-## Special Thanks
+# Special Thanks
 
 Thank you Bharani, [Email This](https://www.emailthis.me), for providing a fantastic Boilerplate for this extension.
 

@@ -16,7 +16,7 @@
 Similarly to MetaMask, BandMask allows developers to build dApp UI on website. It exposes instance of Band Protocol Client to the web, and allows the dApp to communicate with blockchain without having to manage user wallet credentials itself.
 
 <div align="center">
-  <img width="220px" src="resources/screenshot-1.png" alt="Mockup" />&nbsp;<img width="220px" src="resources/screenshot-2.png" alt="Mockup" />&nbsp;<img width="220px" src="resources/screenshot-3.png" alt="Mockup" />&nbsp;<img width="220px" src="resources/screenshot-4.png" alt="Mockup" />&nbsp;
+  <img width="210px" src="resources/screenshot-1.png" alt="Mockup" />&nbsp;<img width="210px" src="resources/screenshot-2.png" alt="Mockup" />&nbsp;<img width="210px" src="resources/screenshot-3.png" alt="Mockup" />&nbsp;<img width="210px" src="resources/screenshot-4.png" alt="Mockup" />&nbsp;
 </div>
 
 ## Features

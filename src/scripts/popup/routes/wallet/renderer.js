@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Button } from '~/popup/components/Button'
-import knownTokens from '~/config/tokens'
 import Token from '~/popup/components/Token'
 
 const Container = styled.main`
@@ -81,19 +80,28 @@ const TokenList = styled.div`
   width: 100%;
 `
 
-export default ({ wallet, identicon, onAddressClick }) => (
+export default ({
+  wallet,
+  identicon,
+  onAddressClick,
+  onMint,
+  balance,
+  knownTokens,
+}) => (
   <Container>
     <WalletInfo>
       <Identicon src={identicon} />
       <NameBalance>
         <Name>{wallet.name}</Name>
-        <Balance>0 BAND</Balance>
+        <Balance>
+          {balance.get('bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb')} BAND
+        </Balance>
       </NameBalance>
       <Actions>
         <Button size={10} slim green>
           SEND
         </Button>
-        <Button size={10} slim blue>
+        <Button size={10} slim blue onClick={() => onMint()}>
           GET BAND
         </Button>
       </Actions>
@@ -104,7 +112,12 @@ export default ({ wallet, identicon, onAddressClick }) => (
     </Address>
     <TokenList>
       {knownTokens.map(token => (
-        <Token key={token.address} {...token} balance={0} />
+        <Token
+          key={token.address}
+          {...token}
+          balance={balance.get(token.token_address) || 0}
+          onClick={() => onMint(token.token_address)}
+        />
       ))}
     </TokenList>
   </Container>

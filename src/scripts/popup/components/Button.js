@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export const Button = styled.button`
+const ButtonComponent = styled.button`
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: ${p => p.size || 11}px;
@@ -27,3 +27,35 @@ export const Button = styled.button`
     transform: translateY(0);
   }
 `
+
+export class Button extends React.Component {
+  state = {
+    loading: false,
+  }
+
+  async onClick() {
+    if (this.props.onClick) {
+      const clickResult = this.props.onClick()
+      if (
+        typeof clickResult === 'object' &&
+        typeof clickResult.then === 'function'
+      ) {
+        this.setState({ loading: true })
+        const finalResult = await clickResult
+        this.setState({ loading: false })
+        return finalResult
+      } else {
+        return clickResult
+      }
+    }
+  }
+
+  render() {
+    const { onClick, children, ...props } = this.props
+    return (
+      <ButtonComponent onClick={this.onClick.bind(this)} {...props}>
+        {this.state.loading ? <i className="icon ion-loading-c" /> : children}
+      </ButtonComponent>
+    )
+  }
+}

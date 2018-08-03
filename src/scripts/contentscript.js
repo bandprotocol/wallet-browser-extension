@@ -13,7 +13,6 @@ window.addEventListener(
 
     if (event.data.type && event.data.type == 'BAND_PROTOCOL') {
       // broadcasts it to rest of extension, or could just broadcast event.data.payload...
-      alert('MESSAGE!!!!')
       ext.runtime.sendMessage(event.data)
     } // else ignore messages seemingly not sent to yourself
   },

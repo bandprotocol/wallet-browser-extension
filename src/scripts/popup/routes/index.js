@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, Switch, Redirect } from 'react-router'
 import styled from 'styled-components'
 
+import TaskQueueOverlay from '~/popup/overlays/tasks'
 import Header from '~/popup/components/Header'
 
 // Routes
@@ -25,6 +26,7 @@ const Content = styled.div`
 
 export default () => (
   <Container>
+    <TaskQueueOverlay />
     <Header />
     <Content>
       <Switch>

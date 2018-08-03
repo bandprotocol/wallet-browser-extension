@@ -1,14 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
+import Vote from './Vote'
 
 const Container = styled.div`
+  margin-bottom: 10px;
+  width: 100%;
+`
+
+const Token = styled.div`
   background: rgba(255, 255, 255, 0.95);
-  border-radius: 4px;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
   padding: 6px 0 6px 12px;
   display: flex;
   align-items: center;
   width: 100%;
-  margin-bottom: 10px;
 `
 
 const Info = styled.div`
@@ -64,17 +70,20 @@ const VerifiedBadge = () => (
   </VerifiedBadgeContaier>
 )
 
-export default ({ address, symbol, name, host, balance }) => (
+export default ({ address, symbol, name, host, balance, onClick }) => (
   <Container>
-    <Info>
-      <Name>{name}</Name>
-      <Host>
-        <VerifiedBadge /> {host}
-      </Host>
-    </Info>
-    <Balance>
-      <BalanceAmount>{balance}</BalanceAmount>
-      <Unit>{symbol}</Unit>
-    </Balance>
+    <Token onClick={onClick}>
+      <Info>
+        <Name>{name}</Name>
+        <Host>
+          <VerifiedBadge /> {host}
+        </Host>
+      </Info>
+      <Balance>
+        <BalanceAmount>{balance}</BalanceAmount>
+        <Unit>{symbol}</Unit>
+      </Balance>
+    </Token>
+    <Vote />
   </Container>
 )

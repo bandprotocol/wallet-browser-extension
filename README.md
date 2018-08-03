@@ -5,17 +5,19 @@
 
   <p>
     <strong>Official Browser Extensions for Band Chain</strong>
+
+[![Code Style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
+[![Dependency Status](https://david-dm.org/bandprotocol/wallet-browser-extension.svg)](https://david-dm.org/bandprotocol/wallet-browser-extension)
+[![devDependency Status](https://david-dm.org/bandprotocol/wallet-browser-extension/dev-status.svg)](https://david-dm.org/bandprotocol/wallet-browser-extension#info=devDependencies)
   </p>
 </div>
 
 Similarly to MetaMask, BandMask allows developers to build dApp UI on website. It exposes instance of Band Protocol Client to the web, and allows the dApp to communicate with blockchain without having to manage user wallet credentials itself.
 
 <div align="center">
-  <a href="https://bandprotocol.com" target="_blank">
-    <img src="https://user-images.githubusercontent.com/891585/43634398-2929251c-9736-11e8-8e1d-2226bad24392.png" alt="Band Protocol Browser Wallet">
-  </a>
+  <img width="220px" src="resources/screenshot-1.png" alt="Mockup" />&nbsp;<img width="220px" src="resources/screenshot-2.png" alt="Mockup" />&nbsp;<img width="220px" src="resources/screenshot-3.png" alt="Mockup" />&nbsp;<img width="220px" src="resources/screenshot-4.png" alt="Mockup" />&nbsp;
 </div>
-
 
 ## Features
 
@@ -66,10 +68,4 @@ Run `npm run dist` to create a zipped, production-ready extension for each brows
 ## Special Thanks
 
 Thank you Bharani, [Email This](https://www.emailthis.me), for providing a fantastic Boilerplate for this extension.
-
-- [ ] Add support for Safari
-- [x] Add Firefox & Opera Promo images
-- [x] Add sample screenshot templates
-- [ ] Write a guide for using config variables & JS preprocessor
-
 

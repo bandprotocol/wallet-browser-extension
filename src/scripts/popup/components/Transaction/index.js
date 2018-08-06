@@ -26,21 +26,6 @@ export default class Task extends React.Component {
       ...args
     )
 
-    // Set VoteCommit if method = commit_vote
-    if (contractType === 'Voting' && method === 'commit_vote') {
-      const id = `${contractAddress}_${args.join('_')}`
-      let [vote_id, hash, deposit] = args
-      let { nonce, vote } = extra
-
-      await this.props.updateVote(id, {
-        vote_id,
-        hash,
-        deposit,
-        nonce,
-        vote,
-      })
-    }
-
     this.props.updateTask(this.props.task.id, { status: 'approved' })
   }
 

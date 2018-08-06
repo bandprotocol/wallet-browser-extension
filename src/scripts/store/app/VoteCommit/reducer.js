@@ -8,9 +8,8 @@ const initialState = fromJS({
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case actionTypes.UPDATE_VOTE:
-      return state.updateIn(['votes', payload.id], (vote = {}) =>
-        Object.assign(vote, payload.vote)
-      )
+      const votes = state.get('votes')
+      return state.set('votes', votes.set(payload.id, payload.vote))
 
     case actionTypes.REMOVE_VOTE:
       return state.removeIn(['votes', payload.id])

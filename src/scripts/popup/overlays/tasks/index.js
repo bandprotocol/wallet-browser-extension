@@ -1,8 +1,5 @@
 import React from 'react'
-import autobind from 'autobind-decorator'
-import { push } from 'connected-react-router'
 import { connect, bindActions } from '~/store'
-import { generateVault } from '~/store/app/Vault/action'
 import { resetTasks } from '~/store/app/TaskQueue/action'
 import Component from './renderer'
 import storage from '~/utils/storage'
@@ -26,6 +23,7 @@ export default class Route extends React.Component {
   }
 
   render() {
+    console.log(this.props.tasks)
     if (this.props.tasks && this.props.tasks.length) {
       return (
         <Component

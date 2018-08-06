@@ -115,6 +115,7 @@ export default ({
         <Token
           key={token.address}
           {...token}
+          wallet={wallet}
           balance={balance.get(token.token_address) || 0}
           onClick={() => onMint(token.token_address)}
         />

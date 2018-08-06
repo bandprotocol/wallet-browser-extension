@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Button } from '~/popup/components/Button'
 import { Input } from '~/popup/components/Input'
 import Transaction from '~/popup/components/Transaction'
+import VoteTransaction from '~/popup/components/VoteTransaction'
 
 const OverlayContainer = styled.div`
   position: absolute;
@@ -64,7 +65,14 @@ export default ({ tasks, resetTasks, isAllTaskComplete }) => (
       </Close>
     </Header>
     <TransactionList>
-      {tasks.map(task => <Transaction key={task.id} task={task} />)}
+      {tasks.map(
+        task =>
+          task.contractType === 'Voting' && task.method === 'commit_vote' ? (
+            <VoteTransaction key={task.id} task={task} />
+          ) : (
+            <Transaction key={task.id} task={task} />
+          )
+      )}
     </TransactionList>
   </OverlayContainer>
 )

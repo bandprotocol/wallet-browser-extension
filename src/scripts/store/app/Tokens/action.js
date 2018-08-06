@@ -8,6 +8,21 @@ export const actionTypes = createScopedActionTypes('app.Tokens', [
   'UPDATE_BALANCE',
 ])
 
+export const queryVotingPower = votingAddress => async (dispatch, getState) => {
+  const secretKey = getState().app.Vault.get('vault').wallets[0].secretKey
+  const client = getBandProtocolClient(secretKey)
+
+  const voting = await client.blockchain.contract('Voting').call(votingAddress)
+  const raw_balance = await voting
+    .method('get_voting_power')
+    .call(client.key.getAddress())
+
+  const balance = TokenBalance.fromSmallUnitBigNumber(
+    raw_balance
+  ).toUnitString()
+  return balance
+}
+
 export const queryBalance = (
   contractAddress = 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'
 ) => async (dispatch, getState) => {

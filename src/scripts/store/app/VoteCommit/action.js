@@ -3,6 +3,7 @@ import { getBandProtocolClient } from '~/store/utils/bandprotocol'
 import { BandBalance, TokenBalance } from '~/store/utils/token-balance'
 import ext from '~/utils/ext'
 import storage from '~/utils/storage'
+import { fromJS } from 'immutable'
 
 export const actionTypes = createScopedActionTypes('app.TaskQueue', [
   'SET_VOTES',
@@ -11,7 +12,7 @@ export const actionTypes = createScopedActionTypes('app.TaskQueue', [
 ])
 
 export const updateVote = (id, vote) => async (dispatch, getStore) => {
-  dispatch({
+  const newVotes = dispatch({
     type: actionTypes.UPDATE_VOTE,
     payload: {
       id,
@@ -19,14 +20,22 @@ export const updateVote = (id, vote) => async (dispatch, getStore) => {
     },
   })
 
-  await storage.set({ votes: newVote })
+  window.q = getStore().app.VoteCommit.get('votes')
+
+  await storage.set({
+    votes: getStore()
+      .app.VoteCommit.get('votes')
+      .toJS(),
+  })
 }
 
 export const reviveVotes = () => async (dispatch, getStore) => {
   const { votes } = await storage.get(['votes'])
 
+  console.log('REVIEW VOTES:', votes)
+
   dispatch({
     type: actionTypes.SET_VOTES,
-    payload: { votes: votes || [] },
+    payload: { votes: fromJS(votes || {}) },
   })
 }

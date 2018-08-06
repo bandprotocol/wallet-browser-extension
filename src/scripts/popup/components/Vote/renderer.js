@@ -10,7 +10,7 @@ const Container = styled.div`
 `
 
 const InnerContainer = styled.div`
-  padding: 6px 4px;
+  padding: 2px 4px;
   font-size: 12px;
 `
 
@@ -20,13 +20,18 @@ const PowerContainer = styled.div`
   border-radius: 3px;
   color: #ffffff;
   width: 100%;
+  margin: 3px 0;
 `
 
 const VotingHeader = styled.div`
   margin: 0 5px;
   font-size: 11px;
   flex: 1;
-  font-weight: 500;
+  font-weight: 600;
+
+  > i {
+    margin: 0 10px 0 5px;
+  }
 `
 const VotingPower = styled.div`
   display: flex;
@@ -42,23 +47,43 @@ const VotingPowerNumber = styled.div`
   margin: 0 5px;
   text-align: center;
   font-weight: 600;
+  font-size: 11px;
 `
+const VoteCommitList = styled.div``
 
-export default () => (
+export default ({
+  voting_address,
+  voteCommits,
+  votingPower,
+  onRequestVotingPower,
+  onWithdrawVotingPower,
+}) => (
   <Container>
     <InnerContainer>
       <PowerContainer>
-        <VotingHeader>Voting Power</VotingHeader>
+        <VotingHeader>
+          <i className="icon ion-md-star" />
+          Voting Power
+        </VotingHeader>
         <VotingPower>
-          <Button slim red>
+          <Button slim red onClick={onWithdrawVotingPower}>
             <i className="icon ion-md-arrow-round-down" />
           </Button>
-          <VotingPowerNumber>1200</VotingPowerNumber>
-          <Button slim blue>
+          <VotingPowerNumber>{votingPower}</VotingPowerNumber>
+          <Button slim blue onClick={onRequestVotingPower}>
             <i className="icon ion-md-arrow-round-up" />
           </Button>
         </VotingPower>
       </PowerContainer>
+      <VoteCommitList>
+        {voteCommits.map(vote => (
+          <VoteCommit
+            key={vote.id}
+            vote={vote}
+            voting_address={voting_address}
+          />
+        ))}
+      </VoteCommitList>
     </InnerContainer>
   </Container>
 )

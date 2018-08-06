@@ -117,6 +117,19 @@ export const commitRegistryApply = (contractAddress, content, amount) => async (
   )
 }
 
+export const query = (contractType, contractAddress, method, ...args) => async (
+  dispatch,
+  getState
+) => {
+  const client = getBandProtocolClient()
+
+  return await client.blockchain
+    .contract(contractType)
+    .call(contractAddress)
+    .method(method)
+    .call(...args)
+}
+
 export const reviveVault = () => async (dispatch, getStore) => {
   const { vault } = await storage.get(['vault'])
 

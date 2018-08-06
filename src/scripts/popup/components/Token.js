@@ -70,7 +70,16 @@ const VerifiedBadge = () => (
   </VerifiedBadgeContaier>
 )
 
-export default ({ address, symbol, name, host, balance, onClick }) => (
+export default ({
+  wallet,
+  token_address,
+  voting_address,
+  symbol,
+  name,
+  host,
+  balance,
+  onClick,
+}) => (
   <Container>
     <Token onClick={onClick}>
       <Info>
@@ -84,6 +93,6 @@ export default ({ address, symbol, name, host, balance, onClick }) => (
         <Unit>{symbol}</Unit>
       </Balance>
     </Token>
-    <Vote />
+    <Vote voting_address={voting_address} wallet={wallet} />
   </Container>
 )

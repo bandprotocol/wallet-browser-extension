@@ -20,7 +20,21 @@ export const updateVote = (id, vote) => async (dispatch, getStore) => {
     },
   })
 
-  window.q = getStore().app.VoteCommit.get('votes')
+  await storage.set({
+    votes: getStore()
+      .app.VoteCommit.get('votes')
+      .toJS(),
+  })
+}
+
+export const removeVote = id => async (dispatch, getStore) => {
+  const newVotes = dispatch({
+    type: actionTypes.UPDATE_VOTE,
+    payload: {
+      id,
+      vote: undefined,
+    },
+  })
 
   await storage.set({
     votes: getStore()
@@ -31,8 +45,6 @@ export const updateVote = (id, vote) => async (dispatch, getStore) => {
 
 export const reviveVotes = () => async (dispatch, getStore) => {
   const { votes } = await storage.get(['votes'])
-
-  console.log('REVIEW VOTES:', votes)
 
   dispatch({
     type: actionTypes.SET_VOTES,

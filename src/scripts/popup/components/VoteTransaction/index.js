@@ -51,6 +51,7 @@ export default class Task extends React.Component {
     const hash = BandProtocolClient.hashedCommit(choice, nonce)
 
     await this.props.updateVote(id, {
+      type: 'vote',
       poll_id,
       voting_power: votingPower,
       nonce,

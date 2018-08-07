@@ -5,11 +5,12 @@ import { query } from '~/store/app/Vault/action'
 import { Promise } from 'core-js'
 import { TokenBalance } from '~/store/utils/token-balance'
 import { commitTxn } from '~/store/app/Vault/action'
-import { updateVote } from '~/store/app/VoteCommit/action'
+import { updateVote, removeVote } from '~/store/app/VoteCommit/action'
 
 @connect(
   undefined,
-  dispatch => bindActions({ query, commitTxn, updateVote }, dispatch)
+  dispatch =>
+    bindActions({ query, commitTxn, updateVote, removeVote }, dispatch)
 )
 export default class Vote extends React.Component {
   state = {
@@ -86,12 +87,18 @@ export default class Vote extends React.Component {
     updateVote(vote.id, newVote)
   }
 
+  async onDismiss() {
+    const { vote, removeVote } = this.props
+    removeVote(vote.id)
+  }
+
   render() {
     console.log('STTE', this.state, this.props.vote)
     return (
       <Component
         vote={this.props.vote}
         {...this.state}
+        onDismiss={this.onDismiss.bind(this)}
         onClaimReward={this.onClaimReward.bind(this)}
         onRevealVote={this.onRevealVote.bind(this)}
         onRescueToken={this.onRescueToken.bind(this)}

@@ -15,6 +15,7 @@ const ButtonComponent = styled.button`
     ${p => {
       if (p.blue) return '#00D1F2, #00B1FF'
       if (p.red) return '#FF9898, #F56868'
+      if (p.grey) return '#928a98,#72687b'
       else return '#00F2A7, #02D594'
     }}
   );

@@ -11,6 +11,20 @@ const Container = styled.div`
   font-size: 11px;
   margin-top: 5px;
   padding: 5px 10px 5px 5px;
+  display: flex;
+`
+const InfoContainer = styled.div`
+  flex: 1;
+`
+const ActionContainer = styled.div`
+  flex: 0 0 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    padding: 2px 6px;
+  }
 `
 const Id = styled.div`
   flex: 1;
@@ -72,81 +86,106 @@ export default ({
   onClaimReward,
   onRevealVote,
   onRescueToken,
+  onDismiss,
 }) => (
   <Container>
-    <FirstRow>
-      <Id>
-        <Symbol choice={vote.choice}>
-          <i
-            className={`icon ion-md-${
-              vote.choice == 1 ? 'arrow-round-up' : 'arrow-round-down'
-            }`}
-          />
-          {vote.choice == 1 ? 'VOTE FOR' : 'VOTE AGAINST'}
-        </Symbol>
-        #{vote.poll_id}
-      </Id>
-      <Dismiss>
-        <i className="icon ion-md-close" />
-      </Dismiss>
-    </FirstRow>
-    <SecondRow>
+    <InfoContainer>
+      <FirstRow>
+        <Id>
+          <Symbol choice={vote.choice}>
+            <i
+              className={`icon ion-md-${
+                vote.choice == 1 ? 'arrow-round-up' : 'arrow-round-down'
+              }`}
+            />
+            {vote.choice == 1 ? 'VOTE FOR' : 'VOTE AGAINST'}
+          </Symbol>
+          #{vote.poll_id}
+        </Id>
+      </FirstRow>
+      <SecondRow>
+        {(() => {
+          if (period === 0) {
+            return (
+              <Status>{`Reveal ${moment(
+                commit_end_time * 1000
+              ).fromNow()}`}</Status>
+            )
+          }
+          if (period === 1) {
+            if (vote.revealed) {
+              return (
+                <Status>{`End ${moment(
+                  reveal_end_time * 1000
+                ).fromNow()}`}</Status>
+              )
+            } else {
+              return (
+                <Status>
+                  {`End ${moment(reveal_end_time * 1000).fromNow()} `}
+                </Status>
+              )
+            }
+          }
+          if (period === 2) {
+            if (vote.revealed) {
+              return (
+                <Status>
+                  {`You ${
+                    result === !!vote.choice ? 'won' : 'lost'
+                  }  (${vote_for} vs ${vote_against}) ${moment(
+                    reveal_end_time * 1000
+                  ).fromNow()}`}
+                </Status>
+              )
+            } else {
+              return (
+                <Status>
+                  {`Expired ${moment(reveal_end_time * 1000).fromNow()}`}
+                </Status>
+              )
+            }
+          }
+        })()}
+      </SecondRow>
+    </InfoContainer>
+    <ActionContainer>
       {(() => {
         if (period === 0) {
-          return (
-            <Status>{`Reveal ${moment(
-              commit_end_time * 1000
-            ).fromNow()}`}</Status>
-          )
         }
         if (period === 1) {
           if (vote.revealed) {
-            return (
-              <Status>{`End ${moment(
-                reveal_end_time * 1000
-              ).fromNow()}`}</Status>
-            )
           } else {
             return (
-              <Status>
-                {`End ${moment(reveal_end_time * 1000).fromNow()} `}
-                <Button slim green size={9} onClick={onRevealVote}>
-                  REVEAL
-                </Button>
-              </Status>
+              <Button slim green size={9} onClick={onRevealVote}>
+                REVEAL
+              </Button>
             )
           }
         }
         if (period === 2) {
-          if (vote.revealed) {
+          if (vote.revealed && !vote.claimed) {
             return (
-              <Status>
-                {`You ${
-                  result === !!vote.choice ? 'won' : 'lost'
-                }  (${vote_for} vs ${vote_against}) ${moment(
-                  reveal_end_time * 1000
-                ).fromNow()}`}
-                {!vote.claimed && (
-                  <Button slim blue size={9} onClick={onClaimReward}>
-                    WITHDRAW
-                  </Button>
-                )}
-              </Status>
+              <Button slim blue size={9} onClick={onClaimReward}>
+                WITHDRAW
+              </Button>
+            )
+          }
+          if (!vote.revealed && !vote.rescued) {
+            return (
+              <Button slim blue size={9} onClick={onRescueToken}>
+                WITHDRAW
+              </Button>
             )
           } else {
             return (
-              <Status>
-                {`Expired ${moment(reveal_end_time * 1000).fromNow()}`}
-                {!vote.rescued && (
-                  <Button slim blue size={9} onClick={onRescueToken}>
-                    WITHDRAW
-                  </Button>
-                )}
-              </Status>
+              <Button slim grey size={9} onClick={onDismiss}>
+                DISMISS
+              </Button>
             )
           }
         }
       })()}
-    </SecondRow>
+    </ActionContainer>
   </Container>
 )

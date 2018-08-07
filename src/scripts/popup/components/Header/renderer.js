@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 const Container = styled.div`
   position: relative;
@@ -57,8 +57,25 @@ const BandProtocol = styled.div`
 const Network = styled.div`
   font-size: 9px;
 `
+const ActionContainer = styled.div`
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+`
+const SpinKeyframe = keyframes`
+  from {transform:rotate(0deg);}
+  to {transform:rotate(1440deg);}
+`
+const Refresh = styled.div`
+  animation: ${p => (p.refreshing ? `${SpinKeyframe} 1.2s infinite` : 'none')};
+  color: #ffffff;
+  font-size: 18px;
+  padding: 0 5px;
+  transition: all 0.2s;
+`
 
-export default props => (
+export default ({ onRefresh, refreshing }) => (
   <Container>
     <LogoContainer>
       <Logo src="images/logo.png" />
@@ -67,5 +84,10 @@ export default props => (
       <BandProtocol>BAND Protocol</BandProtocol>
       <Network>Dev Network</Network>
     </NetworkContainer>
+    <ActionContainer>
+      <Refresh onClick={onRefresh} refreshing={refreshing}>
+        <i className="icon ion-ios-refresh" />
+      </Refresh>
+    </ActionContainer>
   </Container>
 )

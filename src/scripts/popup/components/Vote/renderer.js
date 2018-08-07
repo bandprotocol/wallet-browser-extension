@@ -81,9 +81,18 @@ export default ({
       </PowerContainer>
     </InnerContainer>
     <VoteCommitList>
-      {voteCommits.map(vote => (
-        <VoteCommit key={vote.id} vote={vote} voting_address={voting_address} />
-      ))}
+      {voteCommits.map(
+        vote =>
+          vote.type === 'vote' ? (
+            <VoteCommit
+              key={vote.id}
+              vote={vote}
+              voting_address={voting_address}
+            />
+          ) : (
+            undefined
+          )
+      )}
     </VoteCommitList>
   </Container>
 )

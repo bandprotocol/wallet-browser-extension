@@ -26,6 +26,15 @@ export default class Task extends React.Component {
       ...args
     )
 
+    if (contractType === 'Registry' && method === 'challenge') {
+      const poll_id = result
+
+      await this.props.updateVote(id, {
+        type: 'challenge',
+        poll_id,
+      })
+    }
+
     this.props.updateTask(this.props.task.id, { status: 'approved' })
   }
 

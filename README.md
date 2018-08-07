@@ -51,5 +51,5 @@ Run `npm run dist` to create a zipped, production-ready extension for each brows
 
 # Special Thanks
 
-Thank you Bharani, [Email This](https://www.emailthis.me), for providing a fantastic Boilerplate for this extension.
+Thank you Bharani for providing a fantastic Boilerplate for this extension.
 

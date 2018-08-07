@@ -950,9 +950,9 @@ balanced-match@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
 
-bandprotocol@0.5.9:
-  version "0.5.9"
-  resolved "https://registry.yarnpkg.com/bandprotocol/-/bandprotocol-0.5.9.tgz#f7a0f0a28934588dabe829183c2c26451dbea4be"
+bandprotocol@0.5.10:
+  version "0.5.10"
+  resolved "https://registry.yarnpkg.com/bandprotocol/-/bandprotocol-0.5.10.tgz#b277c5c4a8766639d138f1704995f15b88bd6cce"
   dependencies:
     bignumber.js "^7.2.1"
     buffer "^5.1.0"

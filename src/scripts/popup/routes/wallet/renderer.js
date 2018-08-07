@@ -85,6 +85,7 @@ export default ({
   identicon,
   onAddressClick,
   onMint,
+  onSend,
   balance,
   knownTokens,
 }) => (
@@ -98,7 +99,7 @@ export default ({
         </Balance>
       </NameBalance>
       <Actions>
-        <Button size={10} slim green>
+        <Button size={10} slim green onClick={onSend}>
           SEND
         </Button>
         <Button size={10} slim blue onClick={() => onMint()}>

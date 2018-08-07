@@ -1,1 +1,1 @@
-export const BLOCKCHAIN_ENDPOINT = 'http://localhost:80/'
+export const BLOCKCHAIN_ENDPOINT = 'https://blockchain.cryptonews.band'

@@ -3,15 +3,14 @@ import styled from 'styled-components'
 import { Button } from '~/popup/components/Button'
 import VoteCommit from '~/popup/components/VoteCommit'
 
-const Container = styled.div`
-  background: #6645c2;
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-`
+const Container = styled.div``
 
 const InnerContainer = styled.div`
-  padding: 2px 4px;
+  background: #9165e4;
   font-size: 12px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  padding: 0 3px 0 7px;
 `
 
 const PowerContainer = styled.div`
@@ -20,25 +19,30 @@ const PowerContainer = styled.div`
   border-radius: 3px;
   color: #ffffff;
   width: 100%;
-  margin: 3px 0;
 `
 
 const VotingHeader = styled.div`
   margin: 0 5px;
-  font-size: 11px;
+  font-size: 10px;
   flex: 1;
   font-weight: 600;
 
   > i {
-    margin: 0 10px 0 5px;
+    margin: 0 5px 0 0;
   }
 `
 const VotingPower = styled.div`
   display: flex;
-  flex: 0 1 70px;
+  flex: 0 1 75px;
+  align-items: center;
+
+  button {
+    font-size: 10px;
+    height: 1.6em;
+  }
 
   i {
-    font-size: 12px;
+    font-size: 10px;
     margin: 0 2px;
   }
 `
@@ -63,27 +67,23 @@ export default ({
       <PowerContainer>
         <VotingHeader>
           <i className="icon ion-md-star" />
-          Voting Power
+          VOTING POWER
         </VotingHeader>
         <VotingPower>
           <Button slim red onClick={onWithdrawVotingPower}>
-            <i className="icon ion-md-arrow-round-down" />
+            <i className="icon ion-md-remove" />
           </Button>
           <VotingPowerNumber>{votingPower}</VotingPowerNumber>
           <Button slim blue onClick={onRequestVotingPower}>
-            <i className="icon ion-md-arrow-round-up" />
+            <i className="icon ion-md-add" />
           </Button>
         </VotingPower>
       </PowerContainer>
-      <VoteCommitList>
-        {voteCommits.map(vote => (
-          <VoteCommit
-            key={vote.id}
-            vote={vote}
-            voting_address={voting_address}
-          />
-        ))}
-      </VoteCommitList>
     </InnerContainer>
+    <VoteCommitList>
+      {voteCommits.map(vote => (
+        <VoteCommit key={vote.id} vote={vote} voting_address={voting_address} />
+      ))}
+    </VoteCommitList>
   </Container>
 )

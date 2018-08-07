@@ -52,12 +52,12 @@ export default class Vote extends React.Component {
     })
   }
 
-  // onClaimReward() {
-  //   claim_reward
-  // }
+  async onClaimReward() {
+    //
+  }
 
   async onRevealVote() {
-    const { vote, voting_address, updateVote } = this.props
+    const { vote, voting_address, updateVote, commitTxn } = this.props
     await commitTxn(
       'Voting',
       voting_address,
@@ -75,16 +75,24 @@ export default class Vote extends React.Component {
   }
 
   async onRescueToken() {
-    const { vote, voting_address } = this.props
+    const { vote, voting_address, updateVote, commitTxn } = this.props
+    console.log('RESCUE TOKENS')
     await commitTxn('Voting', voting_address, 'rescue_token', vote.poll_id)
+
+    const newVote = {
+      ...vote,
+      rescued: true,
+    }
+    updateVote(vote.id, newVote)
   }
 
   render() {
-    console.log('STTE', this.state)
+    console.log('STTE', this.state, this.props.vote)
     return (
       <Component
         vote={this.props.vote}
         {...this.state}
+        onClaimReward={this.onClaimReward.bind(this)}
         onRevealVote={this.onRevealVote.bind(this)}
         onRescueToken={this.onRescueToken.bind(this)}
       />

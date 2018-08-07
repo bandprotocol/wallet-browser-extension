@@ -20,7 +20,8 @@ const Container = styled.div`
   :after {
     content: '';
     position: absolute;
-    border-bottom: solid 1px rgba(255, 255, 255, 0.5);
+    border-bottom: solid 1px rgba(230, 180, 255, 0.5);
+    /* border-bottom: solid 1px rgba(255, 255, 255, 0.5); */
     bottom: 0;
     left: 15px;
     right: 15px;

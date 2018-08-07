@@ -64,7 +64,7 @@
   "dependencies": {
     "autobind-decorator": "^2.1.0",
     "babel-preset-react": "^6.24.1",
-    "bandprotocol": "0.5.9",
+    "bandprotocol": "0.5.10",
     "bignumber.js": "^7.2.1",
     "connected-react-router": "^4.3.0",
     "immutable": "^3.8.2",

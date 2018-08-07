@@ -54,7 +54,7 @@ export class Button extends React.Component {
     const { onClick, children, ...props } = this.props
     return (
       <ButtonComponent onClick={this.onClick.bind(this)} {...props}>
-        {this.state.loading ? <i className="icon ion-loading-c" /> : children}
+        {this.state.loading ? <i className="icon ion-ios-more" /> : children}
       </ButtonComponent>
     )
   }

@@ -17,20 +17,14 @@ const OverlayContainer = styled.div`
 `
 
 const Header = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
   display: flex;
   color: #ffffff;
-  padding: 5px 10px 5px 25px;
+  padding: 5px 15px 5px 25px;
   background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0.4) 0%,
-    transparent 100%
+    rgb(159, 53, 255) 0%,
+    rgb(159, 53, 255) 100%
   );
-  padding-bottom: 20px;
-  padding-top: 5px;
   z-index: 200;
 `
 const Title = styled.div`
@@ -38,7 +32,6 @@ const Title = styled.div`
   line-height: 40px;
   font-size: 18px;
   font-weight: 600;
-  text-align: center;
 `
 const Close = styled.div`
   display: block;
@@ -47,9 +40,8 @@ const Close = styled.div`
   cursor: pointer;
 `
 const TransactionList = styled.div`
-  height: 100%;
   overflow: auto;
-  padding: 50px 20px 20px;
+  padding: 15px 20px 20px;
 `
 
 export default ({ tasks, resetTasks, isAllTaskComplete }) => (

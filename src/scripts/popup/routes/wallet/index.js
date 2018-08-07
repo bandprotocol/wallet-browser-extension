@@ -6,7 +6,7 @@ import { BigNumber } from 'bignumber.js'
 import KnownTokens from '~/config/tokens'
 
 import { queryAllBalance } from '~/store/app/Tokens/action'
-import { commitMint } from '~/store/app/Vault/action'
+import { commitMint, commitTransfer } from '~/store/app/Vault/action'
 
 @connect(
   state => ({
@@ -19,6 +19,7 @@ import { commitMint } from '~/store/app/Vault/action'
         goToVaultPassword: () => push('/vault-password'),
         queryAllBalance,
         commitMint,
+        commitTransfer,
       },
       dispatch
     )
@@ -35,6 +36,19 @@ export default class Route extends React.Component {
     if (amount) {
       const result = await this.props.commitMint(amount, token)
       setTimeout(() => this.props.queryAllBalance(), 1000)
+    }
+  }
+
+  async onSend(token) {
+    const amount = window.prompt(`How many BAND do you want to send?`)
+    if (amount) {
+      const recipientAddress = window.prompt(
+        `What address do you want to send to?`
+      )
+      if (recipientAddress) {
+        const result = await this.props.commitTransfer(amount, recipientAddress)
+        setTimeout(() => this.props.queryAllBalance(), 1000)
+      }
     }
   }
 
@@ -59,6 +73,7 @@ export default class Route extends React.Component {
         identicon={identicon}
         onAddressClick={this.onAddressClick.bind(this)}
         onMint={this.onMint.bind(this)}
+        onSend={this.onSend.bind(this)}
         knownTokens={KnownTokens}
       />
     )

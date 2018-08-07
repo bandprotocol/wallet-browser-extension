@@ -26,7 +26,7 @@ export const generateVault = password => async (dispatch, getStore) => {
     wallets: [
       {
         name: 'Primary Wallet',
-        address,
+        address: client.key.getAddress().toString('hex'),
         secretbox,
         secretKey,
       },
@@ -105,6 +105,21 @@ export const commitMint = (
       : TokenBalance
   const balance = new BalanceClass(amount.toString()).toSmallUnit()
   return dispatch(commitTxn('Token', contractAddress, 'mint', balance))
+}
+
+export const commitTransfer = (
+  amount,
+  recipientAddress,
+  contractAddress = 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'
+) => async (dispatch, getState) => {
+  const BalanceClass =
+    contractAddress === 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb'
+      ? BandBalance
+      : TokenBalance
+  const balance = new BalanceClass(amount.toString()).toSmallUnit()
+  return dispatch(
+    commitTxn('Token', contractAddress, 'transfer', recipientAddress, balance)
+  )
 }
 
 export const commitRegistryApply = (contractAddress, content, amount) => async (

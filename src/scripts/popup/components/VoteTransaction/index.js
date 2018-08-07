@@ -41,9 +41,12 @@ export default class Task extends React.Component {
 
     // Set VoteCommit if method = commit_vote
     let [poll_id] = args
-    let { nonce, choice } = extra
+    let { choice } = extra
 
     const id = `${contractAddress}_${poll_id}`
+    let nonce = [...Array(64)]
+      .map(() => Math.floor(Math.random() * 10))
+      .join('')
 
     const hash = BandProtocolClient.hashedCommit(choice, nonce)
 

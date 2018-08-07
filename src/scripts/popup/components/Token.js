@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Vote from './Vote'
 
 const Container = styled.div`
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
   margin-bottom: 10px;
   width: 100%;
 `
@@ -51,14 +52,16 @@ const Unit = styled.div`
 
 const VerifiedBadgeContaier = styled.div`
   display: inline-block;
-  background: linear-gradient(to bottom, #00f2a7, #02d594);
+  background: linear-gradient(to bottom, #b796f7, #8871ff);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.15);
   color: #ffffff;
-  padding: 0 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  text-shadow: 0 0.4px 10px rgba(0, 0, 0, 0.3);
-  line-height: 13px;
-  border-radius: 3px;
-  margin-right: 3px;
+  padding: 0 3px 0 5px;
+  line-height: 14px;
+  border-radius: 2.5px;
+  margin-right: 2px;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
 
   i {
     margin-right: 2px;
@@ -66,7 +69,7 @@ const VerifiedBadgeContaier = styled.div`
 `
 const VerifiedBadge = () => (
   <VerifiedBadgeContaier>
-    <i className="icon ion-md-lock" /> verified
+    <i className="icon ion-md-lock" /> VERIFIED
   </VerifiedBadgeContaier>
 )
 

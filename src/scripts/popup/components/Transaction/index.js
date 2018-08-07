@@ -29,6 +29,8 @@ export default class Task extends React.Component {
     if (contractType === 'Registry' && method === 'challenge') {
       const poll_id = result
 
+      const id = `challenge_${contractAddress}_${poll_id}`
+
       await this.props.updateVote(id, {
         type: 'challenge',
         poll_id,

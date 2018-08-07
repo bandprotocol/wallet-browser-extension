@@ -43,7 +43,7 @@ export default class Task extends React.Component {
     let [poll_id] = args
     let { choice } = extra
 
-    const id = `${contractAddress}_${poll_id}`
+    const id = `poll_${contractAddress}_${poll_id}`
     let nonce = [...Array(64)]
       .map(() => Math.floor(Math.random() * 10))
       .join('')
